@@ -9,7 +9,6 @@ This is the source code for our paper: [Hyperspectral image denoising via spectr
 
 - Python =3.7 
 - torch =1.9.0, torchnet, torchvision
-- pytorch_wavelets
 - pickle, tqdm, tensorboardX, scikit-image
 
 #### 2. Data Preparation
@@ -25,33 +24,19 @@ This is the source code for our paper: [Hyperspectral image denoising via spectr
       python  ./data/datacreate.py
   ```
 
-- download Real HSI data
-
-  [GF5-baoqing dataset](http://hipag.whu.edu.cn/dataset/Noise-GF5.zip) 
-
-  [GF5-wuhan dataset](http://hipag.whu.edu.cn/dataset/Noise-GF5-2.zip)
 
 #### 3. Training
 
 ```python
-   python main.py -a phd --dataroot (your data root) --phase train --loss focalw 
+   python main.py -a nnet --dataroot (your data root) --phase train
 ```
 
 #### 4. Testing
 
-- Testing on Synthetic data with the pre-trained model
+- Testing on Synthetic data or Real HSIs with the pre-trained model
 
   ```python
-     # for the first two cases
-     python  main.py -a phid --phase valid  -r -rp checkpoints/model_stripes.pth
-     # for the last two cases
-      python  main.py -a phid --phase valid  -r -rp checkpoints/model_mixed.pth
-  ```
-
-- Testing on Real HSIs with the pre-trained model
-
-  ```python
-      python main.py -a phid --phase test  -r -rp checkpoints/model_mixed.pth
+      python main.py -a nnet --phase test  -r -rp checkpoints/model_best.pth
   ```
 
 ### Citation
@@ -71,6 +56,6 @@ If you find this work useful, please cite our paper:
         }
 ```
 
-### Concat 
+### Contact 
 
 Feel free to open an issue if you have any question. You could also directly contact us through email at [panerting@whu.edu.cn](mailto:panerting@whu.edu.cn) (Erting Pan)
